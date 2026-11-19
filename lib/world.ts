@@ -126,9 +126,17 @@ class World {
       incidents: [],
       events: [],
       audit: [],
-      network: this.snapshot(),
+      network: {
+        fever: 36.5,
+        profile: "calm",
+        contained: 0,
+        activeIncidents: 0,
+        hottest: "—",
+        criTop: 0,
+      },
       tickCount: 0,
     };
+    this.state.network = this.snapshot();
     this.log("info", "Nightingale watch floor online — baseline learned for 14 devices.");
     this.audit("system", "watch.start", "all devices", "Baseline behaviour capture started");
   }
