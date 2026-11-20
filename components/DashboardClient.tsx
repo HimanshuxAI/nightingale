@@ -356,60 +356,63 @@ export default function DashboardClient({
                 return (
                   <div
                     key={d.id}
-                    className={`row ${p === "critical" ? "critical" : ""}`}
+                    className={`row-content ${p === "critical" ? "critical" : ""}`}
                     onClick={() => setSelectedId(d.id)}
-                    style={{ minWidth: "900px" }}
+                    style={{ minWidth: "900px", display: "contents" }}
                   >
-                    <span className="rank">{String(i + 1).padStart(2, "0")}</span>
-                    <span>
-                      <span className="dev-name">{d.name}</span>
-                      {inc && inc.status === "open" ? <span title={inc.summary} style={{ marginLeft: 6, color: "var(--critical)" }}>⚠</span> : null}
-                      <div className="dev-meta">
-                        <span className={`tier-chip tier-${d.tier}`}>{TIER_LABELS[d.tier]}</span>
-                        {d.kind} · {d.unit} · {d.ip}
-                      </div>
-                    </span>
-                    <span className="fever-cell hide-md" style={{ color: PROFILE_COLOR[p] }}>
-                      {d.fever.toFixed(1)}
-                      <small> °C</small>
-                    </span>
-                    <span>
-                      <div className="cri-bar">
-                        <div style={{ width: `${d.cri}%`, background: PROFILE_COLOR[p], transitionDelay: "120ms" }} />
-                      </div>
-                      <div className="dev-meta" style={{ marginTop: 4 }}>
-                        risk {d.risk.toFixed(0)} → CRI {d.cri}
-                      </div>
-                    </span>
-                    <span className="signals hide-md">
-                      {anySig ? (
-                        <>
-                          <span className={`sig sig-canary ${sig.canary ? "on" : ""}`}>CANARY</span>
-                          <span className={`sig ${sig.ent ? "on" : ""}`}>ENTROPY</span>
-                          <span className={`sig ${sig.shadow ? "on" : ""}`}>SHADOW</span>
-                          <span className={`sig ${sig.smb ? "on" : ""}`}>LATERAL</span>
-                          <span className={`sig ${sig.ren ? "on" : ""}`}>RENAME</span>
-                        </>
-                      ) : (
-                        <span className="sig">— baseline</span>
-                      )}
-                    </span>
-                    <span className="row-actions" onClick={(e) => e.stopPropagation()}>
-                      {d.status === "quarantined" ? (
-                        <button className="btn ghost small" disabled={busy} onClick={() => void act("/api/release", { deviceId: d.id })}>
-                          Release
-                        </button>
-                      ) : (
-                        <button
-                          className={`btn small ${d.cri >= 35 ? "critical" : "ghost"}`}
-                          disabled={busy || d.cri < 25}
-                          title={d.cri < 25 ? "Below containment threshold" : "Isolate on the network"}
-                          onClick={() => void act("/api/contain", { deviceId: d.id })}
-                        >
-                          Contain
-                        </button>
-                      )}
-                    </span>
+                    <div className="row">
+                      <span className="rank">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="dev-cell">
+                        <span className="dev-name">{d.name}</span>
+                        {inc && inc.status === "open" ? <span title={inc.summary} style={{ marginLeft: 6, color: "var(--critical)" }}>⚠</span> : null}
+                        <div className="dev-meta">
+                          <span className={`tier-chip tier-${d.tier}`}>{TIER_LABELS[d.tier]}</span>
+                          {d.kind} · {d.unit} · {d.ip}
+                        </div>
+                      </span>
+                      <span className="fever-cell hide-md" style={{ color: PROFILE_COLOR[p] }}>
+                        {d.fever.toFixed(1)}
+                        <small> °C</small>
+                      </span>
+                      <span className="cri-cell">
+                        <div className="cri-bar">
+                          <div style={{ width: `${d.cri}%`, background: PROFILE_COLOR[p], transitionDelay: "120ms" }} />
+                        </div>
+                        <span className="cri-val">{d.cri}</span>
+                        <div className="dev-meta" style={{ marginTop: 4 }}>
+                          risk {d.risk.toFixed(0)} / 100
+                        </div>
+                      </span>
+                      <span className="signals hide-md">
+                        {anySig ? (
+                          <>
+                            <span className={`sig sig-canary ${sig.canary ? "on" : ""}`}>CANARY</span>
+                            <span className={`sig ${sig.ent ? "on" : ""}`}>ENTROPY</span>
+                            <span className={`sig ${sig.shadow ? "on" : ""}`}>SHADOW</span>
+                            <span className={`sig ${sig.smb ? "on" : ""}`}>LATERAL</span>
+                            <span className={`sig ${sig.ren ? "on" : ""}`}>RENAME</span>
+                          </>
+                        ) : (
+                          <span className="sig">— baseline</span>
+                        )}
+                      </span>
+                      <span className="row-actions" onClick={(e) => e.stopPropagation()}>
+                        {d.status === "quarantined" ? (
+                          <button className="btn secondary small" disabled={busy} onClick={() => void act("/api/release", { deviceId: d.id })}>
+                            Release
+                          </button>
+                        ) : (
+                          <button
+                            className={`btn small ${d.cri >= 35 ? "critical" : "secondary"}`}
+                            disabled={busy || d.cri < 25}
+                            title={d.cri < 25 ? "Below containment threshold" : "Isolate on the network"}
+                            onClick={() => void act("/api/contain", { deviceId: d.id })}
+                          >
+                            Contain
+                          </button>
+                        )}
+                      </span>
+                    </div>
                   </div>
                 );
               })}

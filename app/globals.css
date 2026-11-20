@@ -255,12 +255,11 @@ h3 { font-size: clamp(20px, 2.5vw, 28px); }
   cursor: pointer;
   transition: background 120ms ease;
 }
-.row:hover { background: rgba(168, 123, 42, 0.06); }
 .row:last-child { border-bottom: none; }
 .row.critical { background: rgba(179, 38, 30, 0.06); border-left: 3px solid var(--critical); }
-.row.critical:hover { background: rgba(179, 38, 30, 0.1); }
 .rank { font-family: var(--font-mono); font-size: 16px; font-weight: 500; color: var(--muted); }
 .row.critical .rank { color: var(--critical); }
+.dev-cell { display: flex; flex-direction: column; gap: 2px; }
 .dev-name { font-weight: 600; font-size: 14px; line-height: 1.25; }
 .dev-meta { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-top: 2px; letter-spacing: 0.04em; }
 
@@ -394,3 +393,43 @@ select:focus, input:focus { border-color: var(--brand); }
 
 /* ── Leadership summary cards ── */
 .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--s3); margin-top: var(--s4); }
+
+/* ── Button depth variants ── */
+.btn.secondary { background: var(--card); border-color: var(--border); color: var(--ink); }
+.btn.secondary:hover { border-color: var(--brand); background: rgba(46,107,94,0.06); }
+.btn.critical { background: var(--critical); border-color: var(--critical); color: #fff; }
+.btn.critical:hover { background: #9e2215; border-color: #9e2215; }
+.btn.muted { background: var(--card); border-color: var(--border); color: var(--muted); opacity: 0.6; cursor: not-allowed; }
+.btn.muted:hover { opacity: 0.6; }
+
+/* ── Row depth ── */
+.row-content { position: relative; overflow: hidden; display: contents; }
+.row { position: relative; }
+.row::before {
+  content: "";
+  position: absolute; inset: 0; border-radius: 3px;
+  border-left: 3px solid transparent; z-index: 0; pointer-events: none;
+}
+.row.critical::before { border-left-color: var(--critical); opacity: 0; transition: opacity 120ms ease; }
+.row-content:hover .row.critical::before { opacity: 0.5; }
+.row-content:hover .row { background: rgba(168, 123, 42, 0.06); }
+.row-content:hover .row.critical { background: rgba(179, 38, 30, 0.04); }
+
+/* ── Cri bar number label ── */
+.cri-cell { position: relative; }
+.cri-val { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 10px; color: var(--muted); font-family: var(--font-mono); font-weight: 500; }
+
+/* ── Masthead depth ── */
+.masthead { position: relative; z-index: 2; }
+
+/* ── Panel depth ── */
+.panel { position: relative; }
+.panel > .panel-head { border-radius: 3px 3px 0 0; }
+
+/* ── Scrollbar for ticker ── */
+.ticker::-webkit-scrollbar { width: 6px; }
+.ticker::-webkit-scrollbar-track { background: transparent; }
+.ticker::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ── Event feed dot ── */
+.tick-dot { box-shadow: 0 0 0 1px var(--card); }
