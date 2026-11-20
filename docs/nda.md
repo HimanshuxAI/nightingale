@@ -1,6 +1,6 @@
 # Mutual Non-Disclosure Agreement
 
-**Project:** Nightingale — Early Ransomware Detection for Hospitals
+**Project:** Nightingale: Early Ransomware Detection for Hospitals
 **Template status:** For review by both parties' advisers before signature. Placeholders appear in [brackets].
 
 ## 1. Parties
@@ -47,7 +47,7 @@ This Agreement takes effect on the date of the last signature and runs for **two
 Section 4 does not apply to information the receiving Party must disclose:
 
 1. that falls within any exception in Section 3;
-2. when required by law, regulation, court order, or a regulator — provided the receiving Party gives the disclosing Party prompt written notice where lawful, so the disclosing Party can seek protection; or
+2. when required by law, regulation, court order, or a regulator, provided the receiving Party gives the disclosing Party prompt written notice where lawful, so the disclosing Party can seek protection; or
 3. to a Party's legal or financial advisers under Section 4.2 conditions.
 
 ## 7. No licence
