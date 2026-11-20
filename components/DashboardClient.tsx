@@ -169,7 +169,10 @@ export default function DashboardClient({
         <div className="brand">
           <div>
             <div className="brand-word">
-              Nightingale<span className="pulse">.</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+              Nightingale
             </div>
             <div className="brand-sub">{hospital.toUpperCase()} · RANSOMWARE WATCH FLOOR</div>
           </div>
@@ -180,7 +183,7 @@ export default function DashboardClient({
             <span className="dot" style={{ background: mode === "supabase" ? "var(--calm)" : "var(--resolved)" }} />
             {mode === "supabase" ? "Supabase linked" : "Local demo"}
           </span>
-          <span className="chip" style={{ background: "rgba(46,107,94,0.08)", borderColor: "var(--brand)", color: "var(--brand)" }}>
+          <span className="chip" style={{ background: "var(--brand-light)", borderColor: "var(--brand-border)", color: "var(--brand)" }}>
             {getRoleLabel(role)}
           </span>
           <span className="chip mono">{clock}</span>
