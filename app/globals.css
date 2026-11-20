@@ -72,7 +72,7 @@ body::before {
 }
 
 /* ── Page container ── */
-.wrap { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; padding: var(--s5) var(--s4) var(--s7); }
+.wrap { position: relative; z-index: 1; max-width: 1160px; margin: 0 auto; padding: 36px 32px 56px; }
 
 /* ── Type ── */
 h1, h2, h3, .wordmark, .display {
@@ -112,10 +112,10 @@ h3 { font-size: clamp(20px, 2.5vw, 28px); }
   border-bottom: 1px solid var(--border);
 }
 .brand { display: flex; align-items: baseline; gap: var(--s3); }
-.brand-word { font-size: 28px; }
+.brand-word { font-size: 24px; color: var(--ink); }
 .brand-word .pulse { color: var(--brass); font-style: normal; font-weight: 480; }
-.brand-sub { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
-.masthead-meta { display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap; }
+.brand-sub { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; margin-top: 2px; }
+.masthead-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
 /* ── Chips ── */
 .chip {
@@ -147,6 +147,7 @@ h3 { font-size: clamp(20px, 2.5vw, 28px); }
   font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 500;
+  text-transform: none;
   letter-spacing: 0.01em;
   padding: 8px 14px;
   border-radius: 3px;
@@ -165,7 +166,9 @@ h3 { font-size: clamp(20px, 2.5vw, 28px); }
 .btn.critical { background: var(--critical); border-color: var(--critical); color: #fff; }
 .btn.critical:hover { background: #9e2215; border-color: #9e2215; }
 .btn.watch { background: var(--watch); border-color: var(--watch); color: #fff; }
-.btn.small { font-size: 11px; padding: 4px 10px; border-radius: 3px; }
+.btn.secondary { background: var(--card); border-color: var(--border); color: var(--ink); }
+.btn.secondary:hover { border-color: var(--brand); background: rgba(46,107,94,0.06); color: var(--brand); }
+.btn.small { font-size: 12px; padding: 6px 12px; border-radius: 3px; margin: 0; display: inline-block; width: auto; }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
 /* ── Panels ── */
@@ -198,13 +201,13 @@ h3 { font-size: clamp(20px, 2.5vw, 28px); }
 }
 .fever-num {
   font-family: var(--font-serif);
-  font-size: 64px;
+  font-size: 56px;
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   line-height: 1.1;
   font-variant-numeric: lining-nums;
 }
-.fever-num sup { font-size: 22px; font-weight: 480; color: var(--muted); }
+.fever-num sup { font-size: 18px; font-weight: 480; color: var(--muted); }
 .fever-profile { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; margin-top: 4px; }
 .fever-bar {
   position: relative; height: 10px; border-radius: 999px; margin-top: var(--s2);
@@ -338,8 +341,8 @@ select:focus, input:focus { border-color: var(--brand); }
 @media (max-width: 1020px) { .login-grid { grid-template-columns: 1fr; gap: var(--s5); } }
 .login-hero { padding-top: var(--s2); }
 .login-hero h1 {
-  font-family: var(--font-serif); font-size: clamp(38px, 4.5vw, 58px);
-  font-weight: 600; letter-spacing: -0.02em; line-height: 1.06; margin: var(--s3) 0 var(--s4);
+  font-family: var(--font-serif); font-size: clamp(36px, 4vw, 50px);
+  font-weight: 600; letter-spacing: -0.02em; line-height: 1.06; margin: var(--s2) 0 var(--s4);
 }
 .login-hero h1 .pulse { color: var(--brass); font-style: normal; font-weight: 480; }
 .login-hero p.lede { font-size: 15px; line-height: 1.6; color: var(--muted); max-width: 50ch; }
@@ -348,10 +351,10 @@ select:focus, input:focus { border-color: var(--brand); }
 .login-stats > div { display: flex; flex-direction: column; gap: 2px; }
 .stat-n { font-family: var(--font-mono); font-size: 26px; font-weight: 500; letter-spacing: -0.01em; color: var(--brand); }
 .stat-l { font-family: var(--font-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
-.login-card { padding: var(--s5) var(--s5) var(--s4); align-self: start; border-radius: 3px; border-top: 3px solid var(--brand); }
-.login-card h2 { font-family: var(--font-serif); font-size: 24px; font-weight: 600; margin: 4px 0 6px; }
-.login-card .sub { color: var(--muted); font-size: 13px; margin-bottom: var(--s4); line-height: 1.55; }
-.form-col { display: flex; flex-direction: column; gap: var(--s3); }
+.login-card { padding: 20px 20px 16px; align-self: start; border-radius: 3px; border-top: 3px solid var(--brand); }
+.login-card h2 { font-family: var(--font-serif); font-size: 22px; font-weight: 600; margin: 4px 0 4px; }
+.login-card .sub { color: var(--muted); font-size: 12.5px; margin-bottom: var(--s3); line-height: 1.55; }
+.form-col { display: flex; flex-direction: column; gap: var(--s2); }
 .field label { font-family: var(--font-sans); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
 .field input { margin-top: 4px; }
 .form-err { color: var(--critical); font-size: 12px; min-height: 16px; }
@@ -392,7 +395,15 @@ select:focus, input:focus { border-color: var(--brand); }
 .table-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
 /* ── Leadership summary cards ── */
-.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--s3); margin-top: var(--s4); }
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--s3); margin-top: var(--s4); }
+.summary-num {
+  font-family: var(--font-mono);
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  white-space: nowrap;
+}
 
 /* ── Button depth variants ── */
 .btn.secondary { background: var(--card); border-color: var(--border); color: var(--ink); }

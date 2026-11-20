@@ -276,7 +276,7 @@ export default function DashboardClient({
                 Contain {topIncident.deviceName}
               </button>
             ) : (
-              <button className="btn secondary small" style={{ width: "100%", marginTop: "8px" }} disabled>
+              <button className="btn secondary small" style={{ marginTop: "8px" }} disabled>
                 All clear — holding baseline
               </button>
             )}
@@ -295,10 +295,10 @@ export default function DashboardClient({
             <div className="panel" style={{ borderLeft: `4px solid ${PROFILE_COLOR[network.profile]}` }}>
               <div className="panel-head"><span className="kicker">Open Incidents</span></div>
               <div className="panel-body">
-                <div className="fever-num" style={{ fontSize: 42, color: openIncidents.length > 0 ? "var(--critical)" : "var(--calm)" }}>
+                <div className="summary-num" style={{ color: openIncidents.length > 0 ? "var(--critical)" : "var(--brand)" }}>
                   {openIncidents.length}
                 </div>
-                <p className="fever-caption">
+                <p className="fever-caption" style={{ marginTop: "4px" }}>
                   {openIncidents.length === 0 ? "No active threats" : `${openIncidents.filter((i) => i.severity === "critical").length} critical, ${openIncidents.filter((i) => i.severity === "alert").length} alert`}
                 </p>
               </div>
@@ -306,26 +306,26 @@ export default function DashboardClient({
             <div className="panel" style={{ borderLeft: "4px solid var(--contained)" }}>
               <div className="panel-head"><span className="kicker">Contained</span></div>
               <div className="panel-body">
-                <div className="fever-num" style={{ fontSize: 42, color: "var(--contained)" }}>{network.contained}</div>
-                <p className="fever-caption">Devices quarantined</p>
+                <div className="summary-num" style={{ color: "var(--contained)" }}>{network.contained}</div>
+                <p className="fever-caption" style={{ marginTop: "4px" }}>Devices quarantined</p>
               </div>
             </div>
             <div className="panel" style={{ borderLeft: "4px solid var(--brand)" }}>
               <div className="panel-head"><span className="kicker">Fleet Fever</span></div>
               <div className="panel-body">
-                <div className="fever-num" style={{ fontSize: 42, color: PROFILE_COLOR[network.profile] }}>
+                <div className="summary-num" style={{ color: PROFILE_COLOR[network.profile] }}>
                   {network.fever.toFixed(1)}<sup>°C</sup>
                 </div>
-                <p className="fever-caption">Network temperature</p>
+                <p className="fever-caption" style={{ marginTop: "4px" }}>Network temperature</p>
               </div>
             </div>
             <div className="panel" style={{ borderLeft: "4px solid var(--watch)" }}>
               <div className="panel-head"><span className="kicker">Life-Critical at Risk</span></div>
               <div className="panel-body">
-                <div className="fever-num" style={{ fontSize: 42, color: allDevices.filter((d) => d.tier === 0 && d.risk > 35).length > 0 ? "var(--critical)" : "var(--calm)" }}>
+                <div className="summary-num" style={{ color: allDevices.filter((d) => d.tier === 0 && d.risk > 35).length > 0 ? "var(--critical)" : "var(--calm)" }}>
                   {allDevices.filter((d) => d.tier === 0 && d.risk > 35).length}
                 </div>
-                <p className="fever-caption">Tier 0 devices above watch threshold</p>
+                <p className="fever-caption" style={{ marginTop: "4px" }}>Tier 0 devices above watch threshold</p>
               </div>
             </div>
           </div>
