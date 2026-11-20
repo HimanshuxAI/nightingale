@@ -7,10 +7,10 @@ import type { Device, Profile, WorldState } from "@/lib/types";
 import Sparkline from "./Sparkline";
 
 const PROFILE_COLOR: Record<Profile, string> = {
-  calm: "var(--sage)",
-  watch: "var(--amber)",
-  alert: "var(--ember)",
-  critical: "var(--crimson)",
+  calm: "var(--calm)",
+  watch: "var(--watch)",
+  alert: "var(--alert)",
+  critical: "var(--critical)",
 };
 const PROFILE_WORD: Record<Profile, string> = {
   calm: "Ward calm — baseline hold",
@@ -129,7 +129,7 @@ export default function DashboardClient({ mode, hospital }: { mode: "demo" | "su
         <div className="masthead-meta">
           <ProfileChip p={network.profile} />
           <span className="chip">
-            <span className="dot" style={{ background: mode === "supabase" ? "var(--sage)" : "var(--amber)" }} />
+            <span className="dot" style={{ background: mode === "supabase" ? "var(--calm)" : "var(--watch)" }} />
             {mode === "supabase" ? "Supabase linked" : "Local demo"}
           </span>
           <span className="chip mono">{clock}</span>
@@ -403,23 +403,23 @@ export default function DashboardClient({ mode, hospital }: { mode: "demo" | "su
       {/* ── legend ───────────────────────────────────────────────────────── */}
       <section className="legend">
         <div className="legend-item">
-          <b style={{ color: "var(--crimson)" }}>Canary</b>
+          <b style={{ color: "var(--critical)" }}>Canary</b>
           <span>Decoy files scattered across shares. One touch is near-certain evidence — our tripwire.</span>
         </div>
         <div className="legend-item">
-          <b style={{ color: "var(--ember)" }}>Entropy</b>
+          <b style={{ color: "var(--alert)" }}>Entropy</b>
           <span>Encrypted writes look like random noise (≈8 bits/byte). Compression looks different — we can tell.</span>
         </div>
         <div className="legend-item">
-          <b style={{ color: "var(--ember)" }}>Shadow</b>
+          <b style={{ color: "var(--alert)" }}>Shadow</b>
           <span>Deleting volume shadow copies / backups is pre-encryption staging. Classic tell.</span>
         </div>
         <div className="legend-item">
-          <b style={{ color: "var(--amber)" }}>Lateral</b>
+          <b style={{ color: "var(--watch)" }}>Lateral</b>
           <span>SMB/RDP bursts to peer hosts — the worm spreading across wards before it burns.</span>
         </div>
         <div className="legend-item">
-          <b style={{ color: "var(--amber)" }}>Rename</b>
+          <b style={{ color: "var(--watch)" }}>Rename</b>
           <span>Mass rename/create churn — the sweep of an encryption pass across a file tree.</span>
         </div>
       </section>

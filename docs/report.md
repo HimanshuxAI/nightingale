@@ -1,4 +1,4 @@
-# Nightingale — Project Report
+# Nightingale Project Report
 
 **Project:** Nightingale, early ransomware detection for hospitals with patient-safety-first containment
 **Status:** Working prototype (Next.js 15 + Supabase), simulated telemetry

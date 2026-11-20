@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
-import { Fraunces, Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { Source_Serif_4, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const serif = Source_Serif_4({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  axes: ["SOFT", "WONK", "opsz"],
+  weight: ["600"],
+  variable: "--font-serif",
 });
 
-const grotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-grotesk",
-});
-
-const plex = IBM_Plex_Mono({
+const sans = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-  variable: "--font-plex",
+  variable: "--font-sans",
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -27,8 +28,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${fraunces.variable} ${grotesk.variable} ${plex.variable}`}>{children}</body>
+    <html lang="en" className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

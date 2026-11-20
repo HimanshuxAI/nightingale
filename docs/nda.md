@@ -7,8 +7,8 @@
 
 This Agreement is made between:
 
-- **[Team — add names / entity]**, of [address] ("**the Team**"), the developers of the Nightingale prototype; and
-- **[Clinical pilot partner — add hospital / health-system name]**, of [address] ("**the Partner**").
+- **[Team: add legal entity name]**, of [address] ("**the Team**"), the developers of the Nightingale prototype; and
+- **[Clinical pilot partner: add hospital or health-system name]**, of [address] ("**the Partner**").
 
 The Team and the Partner are each a "**Party**" and together "**the Parties**".
 
@@ -60,7 +60,7 @@ This Agreement does not oblige either Party to enter any further agreement, run 
 
 ## 9. Governing law
 
-This Agreement is governed by the laws of **[jurisdiction — add, e.g. England and Wales / State of California]**, and the Parties submit to the exclusive jurisdiction of its courts.
+This Agreement is governed by the laws of **[jurisdiction: add, e.g., England and Wales or State of California]**, and the Parties submit to the exclusive jurisdiction of its courts.
 
 ## 10. Entire agreement and amendments
 
