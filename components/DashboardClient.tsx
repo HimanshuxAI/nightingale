@@ -192,7 +192,7 @@ export default function DashboardClient({
 
       {/* ── status band ── */}
       <section className="band">
-        <div className="panel" style={{ height: "190px", display: "flex", flexDirection: "column" }}>
+        <div className="panel" style={{ height: "190px", display: "flex", flexDirection: "column", borderLeft: `4px solid ${PROFILE_COLOR[network.profile]}` }}>
           <div className="panel-head">
             <span className="kicker">Network fever</span>
             <span className="mono" style={{ fontSize: 10, color: "var(--muted)" }}>
@@ -245,7 +245,7 @@ export default function DashboardClient({
           </div>
         </div>
 
-        <div className="panel" style={{ height: "190px", display: "flex", flexDirection: "column" }}>
+        <div className={`panel contain-card ${openIncidents.length > 0 ? 'critical' : ''}`} style={{ height: "190px", display: "flex", flexDirection: "column" }}>
           <div className="panel-head">
             <span className="kicker">Containment</span>
             <span className="mono" style={{ fontSize: 10, color: "var(--muted)" }}>
@@ -254,7 +254,7 @@ export default function DashboardClient({
           </div>
           <div className="panel-body" style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
             <div style={{ display: "flex", gap: "24px", alignItems: "baseline" }}>
-              <div className="fever-num" style={{ fontSize: 48 }}>
+              <div className="fever-num" style={{ fontSize: 48, color: openIncidents.length > 0 ? "var(--critical)" : "var(--brand)" }}>
                 {openIncidents.length}
               </div>
               <div className="kicker" style={{ letterSpacing: "0.14em" }}>
@@ -276,7 +276,7 @@ export default function DashboardClient({
                 Contain {topIncident.deviceName}
               </button>
             ) : (
-              <button className="btn ghost small" style={{ width: "100%", marginTop: "8px" }} disabled>
+              <button className="btn secondary small" style={{ width: "100%", marginTop: "8px" }} disabled>
                 All clear — holding baseline
               </button>
             )}
@@ -386,11 +386,11 @@ export default function DashboardClient({
                       <span className="signals hide-md">
                         {anySig ? (
                           <>
-                            <span className={`sig sig-canary ${sig.canary ? "on" : ""}`}>CANARY</span>
-                            <span className={`sig ${sig.ent ? "on" : ""}`}>ENTROPY</span>
-                            <span className={`sig ${sig.shadow ? "on" : ""}`}>SHADOW</span>
-                            <span className={`sig ${sig.smb ? "on" : ""}`}>LATERAL</span>
-                            <span className={`sig ${sig.ren ? "on" : ""}`}>RENAME</span>
+                            {sig.canary && <span className="sev-tag critical">CANARY</span>}
+                            {sig.shadow && <span className="sev-tag critical">SHADOW</span>}
+                            {sig.ent && <span className="sev-tag alert">ENTROPY</span>}
+                            {sig.smb && <span className="sev-tag watch">LATERAL</span>}
+                            {sig.ren && <span className="sev-tag watch">RENAME</span>}
                           </>
                         ) : (
                           <span className="sig">— baseline</span>
@@ -414,7 +414,7 @@ export default function DashboardClient({
                       </span>
                     </div>
                   </div>
-                );
+                )
               })}
             </div>
           </section>
